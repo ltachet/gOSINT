@@ -29,8 +29,12 @@ func initGit(mailSet mapset.Set) {
 func gitSearch(target string, WebsiteAPI string, mailSet mapset.Set) mapset.Set {
 	// TODO: add worker for pagination
 	domain := ""
-	targetSplit := strings.Split(target, "/")
 	commits := ""
+	targetSplit := strings.Split(target, "/")
+	if len(targetSplit) != 5 {
+		fmt.Println("You must specify a repository URL")
+		os.Exit(1)
+	}
 
 	fmt.Println("==== GIT SEARCH FOR " + target + " ==== ")
 
